@@ -33,7 +33,6 @@ class Quotifier:
 
     print('Posted')
     
-
   def get_similar_key(self, matchable, collection):
     highest_similarity = 0
     match = None
@@ -120,13 +119,13 @@ class Quotifier:
       fill=TEXT_COLOR
     )
 
-    image.save(f'{QUOTES_DIR}{quote.id}.{IMAGE_EXT}')
+    image.save(f'{QUOTES_DIR}{quote.id}{IMAGE_EXT}')
 
   def get_quote_image(self, quote, background_image):
     if not self.does_quote_exist(quote):
       self.generate_quote_image(quote, background_image)
 
-    return f'{QUOTES_DIR}{quote.id}.{IMAGE_EXT}'
+    return f'{QUOTES_DIR}{quote.id}{IMAGE_EXT}'
 
   def quotify(self, original_tweet, mention):
     author = f'@{original_tweet.user.screen_name}'

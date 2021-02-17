@@ -29,7 +29,16 @@ for dir in dirs:
   file_paths = set()
 
   for file in os.listdir(dir):
-    file_paths.add(os.path.join(dir_name, file))
+    file_path = os.path.join(dir_name, file)
+    filename, ext = os.path.splitext(file_path)
+
+    ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.png']
+
+    if ext in ALLOWED_IMAGE_EXTENSIONS:
+      file_paths.add(file_path)
+
+  if not file_paths:
+    continue
 
   kind = store.get(dir_name, { "files": [] })
 
